@@ -1,0 +1,155 @@
+.leave-tickets {
+  padding: 2rem;
+  border: 5px solid #0c99be;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+  background: linear-gradient(135deg, #f0f9ff, #cfefff);
+}
+
+.leave-tickets h2, .leave-tickets h3 {
+  margin-top: 0;
+  color: #0056b3; 
+  font-size: 1.8rem;
+  font-weight: 600;
+}
+
+.leave-tickets p {
+  margin: 0.5rem 0;
+  color: #0056b3; 
+  font-size: 1.2rem;
+}
+
+.mat-form-field {
+  width: 100%;
+  max-width: 250px;
+}
+.submit-btn {
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  border-radius: 5px;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+}
+.submit-btn:hover {
+  background: rgb(122,238,124);
+  background: radial-gradient(circle, rgba(122,238,124,1) 0%, rgba(55,204,93,1) 100%);
+  color: #ffffff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transform: translateY(-3px);
+}
+
+button {
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  border-radius: 5px;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+button:hover {
+  background-color: rgb(255, 3, 3);
+  color: #ffffff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transform: translateY(-3px);
+}
+
+button:active {
+  transform: translateY(-1px);
+}
+
+button mat-icon {
+  margin-right: 0.5rem; 
+  font-size: 1.2rem;
+  vertical-align: middle; 
+  color: #0056b3; 
+  transition: color 0.3s ease, transform 0.3s ease; 
+}
+
+button:hover mat-icon {
+  color: #003d80; 
+  transform: scale(1.1); 
+}
+
+table {
+  width: 100%;
+  margin-top: 1.5rem;
+  border-collapse: collapse;
+  border: 1px solid #ddd; 
+  border-radius: 8px; 
+  overflow: hidden; 
+}
+
+th, td {
+  padding: 0.75rem;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+th {
+  background: #007bff;
+  color: #0056b3;
+  font-weight: bold;
+  text-transform: uppercase; 
+}
+
+td {
+  background-color: #f9f9f9;
+  color: #333;
+}
+
+tr:nth-child(even) td {
+  background-color: #f1f1f1; 
+}
+
+tr:hover {
+  background-color: #f1f1f1;
+}
+
+.mat-button {
+  min-width: 36px;
+}
+
+.tickets-container {
+  max-height: 400px; 
+  overflow-y: scroll; 
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  scrollbar-width: thin; 
+  scrollbar-color: #888 #f1f1f1; 
+}
+
+.tickets-container::-webkit-scrollbar {
+  width: 8px; 
+}
+
+.tickets-container::-webkit-scrollbar-thumb {
+  background-color: #888; 
+  border-radius: 4px; 
+}
+
+.tickets-container::-webkit-scrollbar-thumb:hover {
+  background-color: #555; 
+}
+
+th.mat-header-cell {
+  text-align: left;
+  background-color: #007bff;
+  color: #ffffff;
+  font-weight: bold;
+  padding: 1rem;
+}
+
+td.mat-cell {
+  padding: 1rem;
+  border-bottom: 1px solid #ddd;
+}
+
+tr:nth-child(even) td {
+  background-color: #f9f9f9;
+}
+
+tr:hover td {
+  background-color: #e6f7ff;
+}

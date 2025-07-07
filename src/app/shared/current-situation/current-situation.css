@@ -1,0 +1,78 @@
+
+.current-situation {
+  padding: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+  color: var(--text-color);
+  background-color: var(--background-color);
+}
+
+.results-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+  color: var(--text-color);
+}
+
+.results-table th, .results-table td {
+  padding: 0.75rem;
+  text-align: left;
+  border: 1px solid #ddd;
+  color: var(--text-color);
+}
+
+.results-table th {
+  font-weight: bold;
+}
+
+.results-table tr:nth-child(even) {
+  background-color: var(--background-light);
+}
+
+.results-table tr:hover {
+  background-color: var(--background-dark);
+}
+
+.results-table button {
+  padding: 0.5rem 1rem;
+  background-color: #007bff;
+  color: var(--text-color);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.results-table button:hover {
+  background-color: #0056b3;
+}
+
+.results {
+  margin-top: 1rem;
+}
+
+.result-item {
+  padding: 1rem;
+  background-color: #ffffff; 
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+  margin-bottom: 1rem;
+  color: var(--text-color);
+  background-color: var(--background-color);
+}
+
+.result-item:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transform: translateY(-3px);
+}
+
+.result-item p {
+  margin: 0;
+  color: var(--text-color);
+}
+
+.result-item:last-child {
+  margin-bottom: 0;
+}

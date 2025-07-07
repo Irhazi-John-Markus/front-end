@@ -1,0 +1,96 @@
+<div class="leave-tickets">
+  <h2>Leave Tickets</h2>
+
+  <h3>Request New Leave Ticket</h3>
+  <form [formGroup]="leaveForm" (ngSubmit)="submitRequest()">
+    <mat-form-field appearance="fill">
+      <mat-label>Start Date</mat-label>
+      <input matInput [matDatepicker]="startPicker" formControlName="startDate">
+      <mat-datepicker-toggle matSuffix [for]="startPicker"></mat-datepicker-toggle>
+      <mat-datepicker #startPicker></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>End Date</mat-label>
+      <input matInput [matDatepicker]="endPicker" formControlName="endDate">
+      <mat-datepicker-toggle matSuffix [for]="endPicker"></mat-datepicker-toggle>
+      <mat-datepicker #endPicker></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Reason</mat-label>
+      <input matInput formControlName="reason">
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Type</mat-label>
+      <mat-select formControlName="type">
+        <mat-option value="Medical">Medical</mat-option>
+        <mat-option value="Personal">Personal</mat-option>
+        <mat-option value="Other">Other</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Start Time</mat-label>
+      <input matInput type="time" formControlName="startTime">
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>End Time</mat-label>
+      <input matInput type="time" formControlName="endTime">
+    </mat-form-field>
+    <button mat-raised-button color="primary" type="submit" class="submit-btn">Submit Request</button>
+  </form>
+
+  <h3>
+    <button mat-button (click)="toggleTicketsVisibility()">
+      <mat-icon>{{ areTicketsVisible ? 'visibility_off' : 'visibility' }}</mat-icon>
+      {{ areTicketsVisible ? 'Hide Tickets' : 'Show Tickets' }}
+    </button>
+  </h3>
+
+  <div class="tickets-container" *ngIf="areTicketsVisible" #ticketsContainer>
+    <table mat-table [dataSource]="leaveTickets" class="mat-elevation-z8">
+      <ng-container matColumnDef="startDate">
+        <th mat-header-cell *matHeaderCellDef> Start Date </th>
+        <td mat-cell *matCellDef="let ticket"> {{ ticket.startDate | date }} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="endDate">
+        <th mat-header-cell *matHeaderCellDef> End Date </th>
+        <td mat-cell *matCellDef="let ticket"> {{ ticket.endDate | date }} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="reason">
+        <th mat-header-cell *matHeaderCellDef> Reason </th>
+        <td mat-cell *matCellDef="let ticket"> {{ ticket.reason }} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="type">
+        <th mat-header-cell *matHeaderCellDef> Type </th>
+        <td mat-cell *matCellDef="let ticket"> {{ ticket.type }} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="startTime">
+        <th mat-header-cell *matHeaderCellDef> Start Time </th>
+        <td mat-cell *matCellDef="let ticket"> {{ ticket.startTime }} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="endTime">
+        <th mat-header-cell *matHeaderCellDef> End Time </th>
+        <td mat-cell *matCellDef="let ticket"> {{ ticket.endTime }} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="status">
+        <th mat-header-cell *matHeaderCellDef> Status </th>
+        <td mat-cell *matCellDef="let ticket"> {{ ticket.status }} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef> Actions </th>
+        <td mat-cell *matCellDef="let ticket">
+          <button mat-button color="warn" (click)="deleteTicket(ticket.id)">Delete</button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </div>
+</div>

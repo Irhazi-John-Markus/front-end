@@ -1,0 +1,92 @@
+.search-filter {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  align-items: center;
+  background-color: #f5f5f5;
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.mat-form-field {
+  width: 100%;
+  max-width: 300px;
+}
+
+.mat-form-field .mat-form-field-wrapper {
+  border-radius: 4px;
+  transition: box-shadow 0.3s ease;
+}
+
+.mat-form-field .mat-form-field-wrapper:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.mat-form-field .mat-form-field-wrapper.mat-focused {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.mat-form-field .mat-form-field-label {
+  color: #333;
+}
+
+.mat-form-field .mat-input-element {
+  padding: 0.5rem;
+  border-radius: 4px;
+}
+
+.mat-form-field .mat-input-element:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px #3f51b5;
+}
+
+.mat-select {
+  width: 100%;
+}
+
+.mat-select .mat-select-trigger {
+  padding: 0.5rem;
+  border-radius: 4px;
+}
+
+.mat-select .mat-select-trigger:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.mat-select .mat-select-trigger.mat-focused {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.mat-datepicker-toggle {
+  margin-right: 0.5rem;
+}
+
+.mat-datepicker-toggle button {
+  border-radius: 4px;
+  transition: box-shadow 0.3s ease;
+}
+
+.mat-datepicker-toggle button:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.mat-datepicker-toggle button:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px #3f51b5;
+}
+
+.total-hours {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #333;
+  margin-top: 1rem;
+}
+
+.total-hours i {
+  font-size: 1.2rem;
+  color: #3f51b5;
+}

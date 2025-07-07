@@ -1,0 +1,27 @@
+<div class="current-situation">
+  <app-search-filter (filterChange)="applyFilter($event)"></app-search-filter>
+  <table class="results-table">
+    <thead>
+      <tr>
+        <th>Action</th>
+        <th>Date</th>
+        <th>Entry</th>
+        <th>Exit</th>
+        <th>Duration</th>
+        <th>Hours Worked</th>
+        <th>Overtime</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let result of results">
+        <td><button (click)="edit(result)">Edit</button></td>
+        <td>{{ result.date }}</td>
+        <td>{{ result.entry }}</td>
+        <td>{{ result.exit || 'N/A' }}</td>
+        <td>{{ result.duration || 'N/A' }}</td>
+        <td>{{ result.workedHours || 'N/A' }}</td>
+        <td>{{ result.overtime || '00:00' }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
