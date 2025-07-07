@@ -1,0 +1,26 @@
+:root {
+  --primary-color: #edecec;
+  --accent-color: #ff4281;
+  --background-color:#b8b7b7;
+  --text-color: #1e1f20;
+}
+
+.dark-theme {
+  --primary-color: #fff;
+  --accent-color: #ff4081;
+  --background-color: #1e1f20;
+  --text-color: #ffffff;
+}
+
+body {
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+.mat-primary {
+  background-color: var(--primary-color) !important;
+}
+
+.mat-accent {
+  background-color: var(--accent-color) !important;
+}

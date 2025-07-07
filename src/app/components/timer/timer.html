@@ -1,0 +1,14 @@
+<div>
+  <div class="timer-container">
+    <h2><mat-icon>hourglass_empty</mat-icon> Timer</h2>
+  </div>
+  <p>{{ getFormattedTime() }}</p>
+  <button class="btn" (click)="startTimer()">Start</button>
+  <button class="stop-btn" (click)="stopTimer()">Stop</button>
+  <button class="reset-btn" (click)="resetTimer()">Reset</button>
+  <div class="circular-progress" [class.active]="startTime !== null">
+    <div class="background-circle"></div>
+    <div class="circle" [style.strokeDashoffset]="440 - (progress / 100) * 440"></div>
+  </div>
+  <app-hourglass [duration]="duration" [isRunning]="isRunning"></app-hourglass>
+</div>

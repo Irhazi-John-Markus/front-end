@@ -1,0 +1,24 @@
+<div class="sidenav">
+  <div class="logo-container">
+    <button class="logo" (click)="toggleCollapse()">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <div *ngIf="!isLeftSidebarCollapsed()" class="logo-text"></div>
+    <button class="btn-close" (click)="closeSidenav()">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+  <ul class="sidenav-nav">
+    <li *ngFor="let item of items; trackBy: trackByFn" class="sidenav-nav-item">
+      <a
+        class="sidenav-nav-link"
+        [routerLink]="item.routeLink"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
+      >
+        <mat-icon class="sidenav-link-icon">{{ item.icon }}</mat-icon>
+        <span *ngIf="!isLeftSidebarCollapsed()" class="sidenav-link-text">{{ item.label }}</span>
+      </a>
+    </li>
+  </ul>
+</div>

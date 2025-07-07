@@ -1,0 +1,48 @@
+.hourglass-container {
+  width: 100px;
+  height: 200px;
+  position: relative;
+  margin: 0 auto;
+}
+
+.hourglass {
+  width: 100%;
+  height: 100%;
+}
+
+.sand-top {
+  animation: sandTopAnimation 5s linear infinite paused;
+  transform-origin: center top;
+}
+
+.sand-bottom {
+  animation: sandBottomAnimation 5s linear infinite paused;
+  transform-origin: center bottom;
+}
+
+.hourglass-container.running .sand-top,
+.hourglass-container.running .sand-bottom {
+  animation-play-state: running;
+}
+
+@keyframes sandTopAnimation {
+  0% {
+    clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
+    opacity: 1;
+  }
+  100% {
+    clip-path: polygon(50% 100%, 100% 100%, 0% 100%);
+    opacity: 0;
+  }
+}
+
+@keyframes sandBottomAnimation {
+  0% {
+    clip-path: polygon(50% 100%, 100% 100%, 0% 100%);
+    opacity: 0;
+  }
+  100% {
+    clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
+    opacity: 1;
+  }
+}

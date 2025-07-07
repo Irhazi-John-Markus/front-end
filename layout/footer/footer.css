@@ -1,0 +1,18 @@
+
+.footer {
+  padding: 1rem;
+  text-align: center;
+
+  .footer-content {
+    font-size: 0.9rem;
+
+    a {
+      text-decoration: none;
+      margin: 0 0.5rem;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}

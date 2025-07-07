@@ -1,0 +1,111 @@
+.content {
+    flex-grow: 1;
+    margin-left: 270px; 
+    padding: 2rem;
+    transition: margin-left 0.3s ease;
+  }
+
+.time-tracker {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 800px;
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 2rem;
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin: 2rem 0;
+    margin-bottom: 1rem;
+  }
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+    min-height: 100vh;
+    box-sizing: border-box;
+  }
+  app-footer{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  button mat-icon {
+    margin-right: 0.75rem;
+    color: black; 
+  }
+  button {
+    background-color: #f0f0f0;
+    color: #333;
+    border: none;
+    padding: 1rem 2rem;
+    font-size: 1rem;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    display: flex;
+    align-items: center;
+  }
+  button:hover {
+    background-color: #e0e0e0;
+    transform: translateX(5px);
+  }
+
+  .timer-hourglass {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-grow: 1;
+  }
+  
+  app-progress-bar {
+    flex-shrink: 0;
+    margin-right: 2rem;
+    width: 300px;
+    transition: transform 0.3s ease;
+  }
+  
+  app-progress-bar:hover {
+    transform: scale(1.05);
+  }
+  
+  app-hourglass {
+    margin-left: 2rem;
+    width: 300px;
+    transition: transform 0.3s ease;
+  }
+  
+  app-hourglass:hover {
+    transform: scale(1.05);
+  }
+  
+  @media (max-width: 768px) {
+    .time-tracker {
+      flex-direction: column;
+      align-items: center;
+      padding: 1.5rem;
+    }
+    
+    app-progress-bar,
+    app-hourglass {
+      margin: 1rem 0;
+      width: 100%;
+      max-width: 300px;
+    }
+  
+    .sidebar {
+      width: 100%;
+      height: auto;
+      position: relative;
+      margin-bottom: 1rem;
+    }
+  
+    .content {
+      margin-left: 0;
+    }
+  }
