@@ -16,17 +16,19 @@
     backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.1);
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    margin: 2rem 0;
+    margin-top: 1.5rem;     
     margin-bottom: 1rem;
   }
   .container {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: center;         
+    justify-content: flex-start; 
     padding: 2rem;
     min-height: 100vh;
     box-sizing: border-box;
   }
+  
   app-footer{
     position: fixed;
     bottom: 0;
