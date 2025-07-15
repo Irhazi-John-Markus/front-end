@@ -6,4 +6,34 @@
         Worked Time: <span class="worked-time">{{ getFormattedTime() }}</span>
       </p>
     </div>
-</div>
+        <section class="clock container">
+      <div class="clock__container grid">
+        <div class="clock__content grid">
+          <div class="clock__circle" #clockCircle>
+            <span class="clock__twelve"></span>
+            <span class="clock__three"></span>
+            <span class="clock__six"></span>
+            <span class="clock__nine"></span>
+            <div class="clock__rounder"></div>
+            <div class="clock__hour" #clockHour></div>
+            <div class="clock__minutes" #clockMinutes></div>
+            <div class="clock__seconds" #clockSeconds></div>
+          </div>
+
+          <div>
+            <div class="clock__text">
+              <div class="clock__text-hour" #textHour></div>
+              <div class="clock__text-minutes" #textMinutes></div>
+              <div class="clock__text-ampm" #textAmPm></div>
+            </div>
+
+            <div class="clock__date">
+              <span #dateDay></span>
+              <span #dateMonth></span>
+              <span #dateYear></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>

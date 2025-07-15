@@ -70,3 +70,115 @@
     color: #000000; 
     font-size: 1.2em;
   }
+
+  /*=============== CLOCK ===============*/
+.clock__container {
+  height: auto;
+  padding: 2rem 0;
+}
+
+.clock__content {
+  row-gap: 2.5rem;
+  justify-items: center;
+}
+
+/* Clock Face */
+.clock__circle {
+  position: relative;
+  width: 240px;
+  height: 240px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow:
+    inset 0 0 10px rgba(0, 0, 0, 0.2),
+    0 8px 30px rgba(0, 0, 0, 0.1),
+    inset 0 0 10px rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.4s ease;
+}
+
+.dark-theme .clock__circle {
+  background: rgba(255, 255, 255, 0.05);
+  box-shadow:
+    inset 0 0 10px rgba(255, 255, 255, 0.1),
+    0 8px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* Clock Marks */
+.clock__twelve,
+.clock__three,
+.clock__six,
+.clock__nine {
+  position: absolute;
+  width: 1.5px;
+  height: 12px;
+  background-color: var(--text-color-light);
+}
+
+.clock__twelve { top: 0; left: 50%; transform: translateX(-50%); }
+.clock__three { right: 0; top: 50%; transform: translateY(-50%); }
+.clock__six { bottom: 0; left: 50%; transform: translateX(-50%); }
+.clock__nine { left: 0; top: 50%; transform: translateY(-50%); }
+
+/* Center dot */
+.clock__rounder {
+  width: 8px;
+  height: 8px;
+  background-color: var(--first-color);
+  border-radius: 50%;
+  z-index: 10;
+  border: 2px solid var(--body-color);
+}
+
+/* Clock Hands */
+.clock__hour::before,
+.clock__minutes::before,
+.clock__seconds::before {
+  content: '';
+  position: absolute;
+  background-color: var(--text-color);
+  width: 2px;
+  height: 3rem;
+  border-radius: 4px;
+  transform-origin: bottom center;
+  left: 50%;
+  top: 20%;
+  transform: translateX(-50%);
+}
+
+.clock__minutes::before {
+  height: 4rem;
+  background-color: var(--text-color);
+}
+
+.clock__seconds::before {
+  height: 5rem;
+  background-color: var(--first-color);
+  width: 1px;
+}
+
+.clock__text {
+  display: flex;
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: var(--title-color);
+  gap: 0.25rem;
+}
+
+.clock__text-ampm {
+  font-size: 0.75rem;
+  margin-top: 0.5rem;
+  font-weight: 500;
+  color: var(--text-color-light);
+}
+
+.clock__date {
+  text-align: center;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text-color-light);
+  margin-top: 0.5rem;
+}

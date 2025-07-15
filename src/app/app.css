@@ -1,33 +1,74 @@
-.content {
-    flex-grow: 1;
-    margin-left: 270px; 
-    padding: 2rem;
-    transition: margin-left 0.3s ease;
+
+.theme-toggle-container {
+  display: flex;
+  justify-content: flex-end;
+  padding: 1rem 2rem;
+}
+
+.theme-toggle-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  border-radius: 999px;
+  background-color: rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+  font-weight: 500;
+
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.1);
   }
 
-.time-tracker {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    max-width: 800px;
+  .theme-icon {
+    transition: transform 0.3s ease;
+  }
+
+  &:active .theme-icon {
+    transform: rotate(30deg);
+  }
+}
+
+.main-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 80px); 
+  padding: 2rem;
+  transition: background-color 0.3s ease;
+}
+
+.time-tracker-card {
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+  transition: background-color 0.3s ease;
+}
+
+.timer-hourglass-wrapper {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.dark-theme {
+  --bg-color: #121212;
+  --card-bg: #1e1e1e;
+  color: #ffffff;
+
+  .theme-toggle-btn {
     background-color: rgba(255, 255, 255, 0.1);
-    padding: 2rem;
-    border-radius: 15px;
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    margin-top: 1.5rem;     
-    margin-bottom: 1rem;
+    color: white;
+
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.2);
+    }
   }
-  .container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;         
-    justify-content: flex-start; 
-    padding: 2rem;
-    min-height: 100vh;
-    box-sizing: border-box;
-  }
+}
   
   app-footer{
     position: fixed;
@@ -111,3 +152,5 @@
       margin-left: 0;
     }
   }
+
+  

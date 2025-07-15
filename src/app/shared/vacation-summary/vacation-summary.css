@@ -1,148 +1,154 @@
-.vacation-summary {
+/* =============================================
+   === Main Container Styles ===
+   ============================================= */
+.vacation-summary-container {
   padding: 2rem;
-  border: 5px solid #0c99be;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  transition: box-shadow 0.3s ease, transform 0.3s ease;
-  background: linear-gradient(135deg, #f0f9ff, #cfefff);
+  max-width: 1200px;
+  margin: auto;
+  font-family: 'Segoe UI', sans-serif;
 }
 
-.vacation-summary h2, .vacation-summary h3 {
-  margin-top: 0;
-  color: #0056b3; 
-  font-size: 1.8rem;
-  font-weight: 600;
-}
-
-.vacation-summary p {
-  margin: 0.5rem 0;
-  color: #0056b3; 
-  font-size: 1.2rem;
-}
-
-.date-filter {
+/* =============================================
+   === Summary Cards Section ===
+   ============================================= */
+.summary-cards {
   display: flex;
-  gap: 1rem;
-  margin-bottom: 1.5rem;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
 }
 
-.mat-form-field {
-  width: 100%;
-  max-width: 250px;
+.summary-card {
+  background-color: #f9f9f9;
+  border-left: 5px solid #007bff;
+  padding: 1rem 1.5rem;
+  border-radius: 6px;
+  flex: 1 1 200px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease;
 }
 
-.mat-form-field .mat-form-field-wrapper {
-  border-radius: 4px;
-  transition: box-shadow 0.3s ease;
+.summary-card h4 {
+  margin: 0;
+  font-size: 1rem;
+  color: #003f7f;
 }
 
-.mat-form-field .mat-form-field-wrapper:hover {
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-.mat-form-field .mat-form-field-wrapper.mat-focused {
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-}
-
-.mat-form-field .mat-form-field-label {
+.summary-card p {
+  margin: 0.5rem 0 0;
+  font-size: 1.5rem;
+  font-weight: bold;
   color: #333;
 }
 
-.mat-form-field .mat-input-element {
-  padding: 0.5rem;
+.summary-card:hover {
+  transform: translateY(-4px);
+}
+
+/* =============================================
+   === Section Containers (Filter, Form, Table) ===
+   ============================================= */
+.date-filter-section,
+.add-request-section,
+.requests-table-section {
+  background-color: #fff;
+   border: 5px solid #0c99be;
+  padding: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  margin-bottom: 2rem;
+}
+
+/* =============================================
+   === Form Layout Helpers ===
+   ============================================= */
+.date-filter-fields,
+.form-row {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.request-form button {
+  margin-top: 1rem;
+}
+
+/* =============================================
+   === Table Styling ===
+   ============================================= */
+.custom-table .mat-header-cell {
+  background-color: #0056b3;
+  color: white;
+}
+
+.custom-table .mat-cell {
+  color: #333;
+}
+
+/* =============================================
+   === Button Styling ===
+   ============================================= */
+
+
+button.mat-raised-button[color="primary"] {
+  background-color: #007bff;
+  color: white;
+  border-radius: 4px;
+  padding: 10px 20px;
+  font-weight: 600;
+  text-transform: none;
+  box-shadow: 0 3px 6px rgba(0, 123, 255, 0.3);
+  transition: all 0.3s ease-in-out;
+}
+
+button.mat-raised-button[color="primary"]:hover {
+  background-color: #0056b3;
+  box-shadow: 0 4px 8px rgba(0, 86, 179, 0.4);
+}
+
+button.mat-raised-button[color="primary"]:focus-visible {
+  outline: 3px solid #007bff;
+  outline-offset: 2px;
+}
+
+
+button.mat-button[color="warn"] {
+  color: #d9534f;
+  font-weight: 500;
+  text-transform: none;
+  transition: background-color 0.3s ease;
+}
+
+button.mat-button[color="warn"]:hover {
+  background-color: rgba(217, 83, 79, 0.1);
   border-radius: 4px;
 }
 
-.mat-form-field .mat-input-element:focus {
-  outline: none;
-  box-shadow: 0 0 0 2px #3f51b5;
+button.mat-button[color="warn"]:focus-visible {
+  outline: 3px solid #d9534f;
+  outline-offset: 2px;
 }
 
-.btn-submit {
-  margin-top: 1rem;
-  padding: 0.5rem 1rem;
-  font-size: 1rem;
-  border-radius: 5px;
-  transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+/* Ripple Effect on Buttons */
+button .mat-ripple {
+  opacity: 0.2 !important;
 }
 
-.btn-submit:hover {
-  background: rgb(122,238,124);
-  background: radial-gradient(circle, rgba(122,238,124,1) 0%, rgba(55,204,93,1) 100%);
-  color: #ffffff;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  transform: translateY(-3px);
+/* =============================================
+   === Responsive Adjustments ===
+   ============================================= */
+@media (max-width: 768px) {
+  .summary-cards,
+  .date-filter-fields,
+  .form-row {
+    flex-direction: column;
+  }
+
+  .summary-card {
+    min-width: 100%;
+  }
 }
-
-button {
-    margin-top: 1rem;
-    padding: 0.5rem 1rem;
-    font-size: 1rem;
-    border-radius: 5px;
-    transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
-  }
-  
-  button:hover {
-    background-color:rgb(220, 14, 14);
-    color: #fff;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    transform: translateY(-3px);
-  }
-  
-  button:active {
-    transform: translateY(-1px);
-  }
-
-  table {
-    width: 100%;
-    margin-top: 1.5rem;
-    border-collapse: collapse;
-    border: 1px solid #ddd; 
-    border-radius: 8px; 
-    overflow: hidden; 
-  }
-
-  th, td {
-    padding: 0.75rem;
-    text-align: left;
-    border-bottom: 1px solid #ddd;
-  }
-
-  th {
-    background: #007bff;
-    color: #0056b3;
-    font-weight: bold;
-    text-transform: uppercase; 
-  }
-  
-  td {
-    background-color: #f9f9f9;
-    color: #333;
-  }
-
-  tr:nth-child(even) td {
-    background-color: #f1f1f1; 
-  }
-
-  tr:hover td {
-    background-color: #e6f7ff; 
-  }
-  .table-container {
-    max-height: 400px; 
-    overflow-y: auto; 
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
-  }
-
-  .mat-button {
-    min-width: 36px;
-    padding: 0.5rem 1rem;
-    font-size: 0.9rem;
-    border-radius: 4px;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-  }
-
-  .mat-button:hover {
-    background-color: #0056b3;
-    color: #fff;
-    transform: scale(1.05);
-  }

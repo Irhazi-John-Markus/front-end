@@ -13,22 +13,22 @@
 [screenWidth]="screenWidth()"
  />
 
-<div class="container" [class.dark-theme]="isDarkTheme">
-  <button mat-button (click)="toggleTheme()">
-    <mat-icon>{{ isDarkTheme ? 'brightness_7' : 'brightness_4' }}</mat-icon>
-    <span>{{ isDarkTheme ? 'Light Theme' : 'Dark Theme' }}</span>
+<div class="theme-toggle-container">
+  <button mat-button class="theme-toggle-btn" (click)="toggleTheme()">
+    <mat-icon class="theme-icon">{{ isDarkTheme ? 'brightness_7' : 'brightness_4' }}</mat-icon>
+    <span class="theme-label">{{ isDarkTheme ? 'Light Theme' : 'Dark Theme' }}</span>
   </button>
 </div>
 
-<div class="content">
-  <div class="time-tracker">
+<div class="main-content">
+  <div class="time-tracker-card">
     <app-progress-bar [progress]="timer.progress"></app-progress-bar>
-    <div class="timer-hourglass">
+    <div class="timer-hourglass-wrapper">
       <app-timer #timer
         (timerStarted)="hourglass.isRunning = true"
         (timerStopped)="hourglass.isRunning = false">
       </app-timer>
       <app-hourglass #hourglass [duration]="60" [isRunning]="timer.isRunning"></app-hourglass>
     </div>
-    <div> 
+  </div>
 </div>
