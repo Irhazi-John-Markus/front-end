@@ -1,4 +1,4 @@
-import { Component,HostListener, OnInit, signal } from '@angular/core';
+import { Component, HostListener, OnInit, signal, inject } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { Footer } from '../../layout/footer/footer';
@@ -7,7 +7,7 @@ import { Hourglass } from "./components/hourglass/hourglass";
 import { ProgressBar } from "./components/progress-bar/progress-bar";
 import { Timer } from "./components/timer/timer";
 import { Main } from "./main/main";
-
+import { ApiService } from "./services/api"
 
 @Component({
   selector: 'app-root',
@@ -21,27 +21,31 @@ import { Main } from "./main/main";
     ProgressBar,
     Timer,
     Main
-],
+  ],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
 export class App implements OnInit {
-    isLeftSidebarCollapsed = signal<boolean>(false);
+  private apiService = inject(ApiService); // 💡 Inject the API service
+
+  isLeftSidebarCollapsed = signal<boolean>(false);
   screenWidth = signal<number>(window.innerWidth);
   title = 'TimeTrack';
   isDarkTheme = localStorage.getItem('theme') === 'dark';
-timer: any;
+
+  // 🔽 New: Hold landing page data
+  landingData: any = null;
 
   constructor() {
     this.applyTheme();
   }
-   
+
   toggleTheme() {
     this.isDarkTheme = !this.isDarkTheme;
     localStorage.setItem('theme', this.isDarkTheme ? 'dark' : 'light');
     this.applyTheme();
   }
-  
+
   applyTheme() {
     if (this.isDarkTheme) {
       document.body.classList.add('dark-theme');
@@ -49,7 +53,6 @@ timer: any;
       document.body.classList.remove('dark-theme');
     }
   }
-  
 
   @HostListener('window:resize')
   onResize() {
@@ -61,10 +64,20 @@ timer: any;
 
   ngOnInit(): void {
     this.isLeftSidebarCollapsed.set(this.screenWidth() < 768);
+
+    // 🔽 Fetch data from Strapi
+    this.apiService.getLandingPage().subscribe({
+      next: (res) => {
+        this.landingData = res.data?.[0]; // Save first entry
+        console.log('Landing page loaded:', this.landingData);
+      },
+      error: (err) => {
+        console.warn('Failed to load data from Strapi', err);
+      }
+    });
   }
 
   changeIsLeftSidebarCollapsed(isLeftSidebarCollapsed: boolean): void {
     this.isLeftSidebarCollapsed.set(isLeftSidebarCollapsed);
   }
 }
-
