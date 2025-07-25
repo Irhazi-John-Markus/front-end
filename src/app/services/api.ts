@@ -21,12 +21,10 @@ export class ApiService {
     return this.http.get<ApiResponse<T>>(`${this.baseUrl}/${endpoint}`);
   }
 
-  // Example: Get all projects
   getProjects() {
     return this.get<any>('projects');
   }
 
-  // Get one project by ID
   getProject(id: number) {
     return this.http.get<any>(`${this.baseUrl}/projects/${id}`);
   }
@@ -44,6 +42,6 @@ export class ApiService {
   }
 
   getLandingPage() {
-    return this.get<any>('landing-page'); // usually only 1 entry
+    return this.get<any>('landing-page'); 
   }
 }
