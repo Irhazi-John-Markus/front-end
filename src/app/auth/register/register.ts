@@ -42,4 +42,7 @@ export class Register {
       ? console.log('Form Submitted', this.registerForm.value) 
       : console.log('Form is invalid');
   }
+   goBack() {
+    this.router.navigate(['/login']);
+  }
 }

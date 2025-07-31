@@ -19,7 +19,7 @@ export class LeftSidebar {
   
   items: SidebarItem[] = [
     {
-      routeLink: 'login', 
+      routeLink: 'login',
       icon: 'account_circle',
       label: 'Login ',
     },
@@ -39,12 +39,12 @@ export class LeftSidebar {
       label: 'Vacation',
     },
     {
-      routeLink: 'Summary',
+      routeLink: 'summary',
       icon: 'cloud',
       label: 'Summary',
     },
     {
-      routeLink: 'Search-filter',
+      routeLink: 'search-filter',
       icon: 'search',
       label: 'Search-Filter',
     },

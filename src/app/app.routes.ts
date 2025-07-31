@@ -12,8 +12,8 @@ export const routes: Routes = [
     { path: 'dashboard', component: Dashboard },
     { path: 'leave-tickets', component: LeaveTickets },
     { path: 'vacation', component: VacationSummary },
-    { path: 'Summary', component: Summary },
-    { path: 'Search-filter', component: InteractiveGrid },
+    { path: 'summary', component: Summary },
+    { path: 'search-filter', component: InteractiveGrid },
     { path: 'login', component: Login },
-    { path: 'register', component: Register }
+    { path: 'register', component: Register },
 ];

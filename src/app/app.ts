@@ -9,6 +9,7 @@ import { Timer } from "./components/timer/timer";
 import { Main } from "./main/main";
 import { ApiService } from "./services/api"
 
+
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -20,20 +21,19 @@ import { ApiService } from "./services/api"
     Hourglass,
     ProgressBar,
     Timer,
-    Main
-  ],
+    Main,
+],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
 export class App implements OnInit {
-  private apiService = inject(ApiService); // 💡 Inject the API service
+  private apiService = inject(ApiService); 
 
   isLeftSidebarCollapsed = signal<boolean>(false);
   screenWidth = signal<number>(window.innerWidth);
   title = 'TimeTrack';
   isDarkTheme = localStorage.getItem('theme') === 'dark';
 
-  // 🔽 New: Hold landing page data
   landingData: any = null;
 
   constructor() {
