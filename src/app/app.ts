@@ -8,6 +8,7 @@ import { ProgressBar } from "./components/progress-bar/progress-bar";
 import { Timer } from "./components/timer/timer";
 import { Main } from "./main/main";
 import { ApiService } from "./services/api"
+import { RouterModule } from "@angular/router";
 
 
 @Component({
@@ -22,6 +23,7 @@ import { ApiService } from "./services/api"
     ProgressBar,
     Timer,
     Main,
+    RouterModule
 ],
   templateUrl: './app.html',
   styleUrl: './app.css'

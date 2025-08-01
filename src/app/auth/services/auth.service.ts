@@ -4,7 +4,6 @@ import { HttpClient } from '@angular/common/http';
 import { from, Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 
-// ✅ Interface for your app's user
 export interface UserInterface {
   uid: string;
   email: string | null;

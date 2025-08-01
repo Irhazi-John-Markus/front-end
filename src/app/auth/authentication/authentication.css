@@ -92,6 +92,63 @@ button:hover {
   color: #3b82f6;
 }
 
+mat-card-title {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.4rem;
+}
+mat-card-title .divider {
+  color: #bcdffb;
+  font-weight: 400;
+}
+mat-card-title span {
+  transition: color 0.2s, font-weight 0.2s;
+  cursor: pointer;
+  color: #0066b3;
+  font-weight: 500;
+}
+mat-card-title span.active {
+  color: #009de0;
+  font-weight: 700;
+  text-decoration: underline;
+}
+.toggle-link {
+  margin-top: 1.2rem;
+  text-align: center;
+  color: #0066b3;
+  font-size: 1rem;
+}
+.toggle-link a {
+  color: #009de0;
+  font-weight: 600;
+  margin-left: 0.3rem;
+  text-decoration: underline;
+  cursor: pointer;
+}
+.ntt-error-message {
+  color: #e53935;
+  background: #fff3f3;
+  border: 1px solid #ffcdd2;
+  border-radius: 6px;
+  padding: 0.7rem 1rem;
+  margin-top: 1rem;
+  font-size: 0.98rem;
+  text-align: center;
+  width: 100%;
+}
+.ntt-success-message {
+  color: #006b21;
+  background: #e6f9ed;
+  border: 1px solid #b2e2c7;
+  border-radius: 6px;
+  padding: 0.7rem 1rem;
+  margin-top: 1rem;
+  font-size: 0.98rem;
+  text-align: center;
+  width: 100%;
+}
+
 @media (max-width: 768px) {
   .login-card {
     padding: 1.5rem 1rem;

@@ -19,9 +19,9 @@ export class LeftSidebar {
   
   items: SidebarItem[] = [
     {
-      routeLink: 'login',
+      routeLink: 'authentication',
       icon: 'account_circle',
-      label: 'Login ',
+      label: 'Authentication',
     },
     {
       routeLink: 'dashboard',
