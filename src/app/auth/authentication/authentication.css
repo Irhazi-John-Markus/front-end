@@ -1,161 +1,351 @@
-body {
-  font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
-  background: linear-gradient(120deg, #e0e7ff 0%, #f8fafc 100%);
-  margin: 0;
+/* === Background & Body === */
+body, .ntt-auth-bg {
   min-height: 100vh;
-}
-
-.login-container {
+  background: linear-gradient(120deg, #e6f0fa 0%, #f8fafc 100%);
+  background-attachment: fixed;
   display: flex;
-  justify-content: center;
   align-items: center;
-  min-height: 100vh;
-  padding: 1rem;
-  box-sizing: border-box;
+  justify-content: center;
+  font-family: 'Segoe UI', 'Inter', Arial, sans-serif;
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
 }
 
-.login-card {
-  width: 100%;
+/* === Card Styling with Depth & Elegance === */
+mat-card {
+  border-radius: 22px;
+  box-shadow: 
+    0 8px 32px 0 rgba(31, 38, 135, 0.18),
+    0 0 15px 0 rgba(0, 157, 224, 0.08);
+  background: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(10px);
+  padding: 2.5rem 2rem 2rem 2rem;
   max-width: 400px;
-  padding: 2.5rem 2rem;
-  border-radius: 20px;
-  background: rgba(255, 255, 255, 0.85);
-  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
-  backdrop-filter: blur(8px);
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  transition: transform 0.3s cubic-bezier(.4,2,.3,1), box-shadow 0.3s;
-}
-
-.login-card:hover {
-  transform: translateY(-8px) scale(1.02);
-  box-shadow: 0 16px 40px 0 rgba(31, 38, 135, 0.18);
-}
-
-.full-width {
   width: 100%;
+  margin: 2rem auto;
+  animation: cardFadeIn 0.9s cubic-bezier(0.25, 1.2, 0.3, 1);
+  position: relative;
+  overflow: visible;
+  border: 1px solid rgba(0, 157, 224, 0.12);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-input[type="text"],
-input[type="password"] {
-  width: 100%;
-  padding: 0.85rem 1rem;
-  margin-top: 0.7rem;
-  border: none;
-  border-radius: 8px;
-  background: #f1f5f9;
-  font-size: 1.05rem;
-  box-shadow: 0 1px 2px rgba(60, 60, 60, 0.04);
-  transition: box-shadow 0.2s, background 0.2s;
+mat-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 
+    0 16px 40px 0 rgba(31, 38, 135, 0.22),
+    0 0 20px 0 rgba(0, 157, 224, 0.12);
 }
 
-input[type="text"]:focus,
-input[type="password"]:focus {
-  background: #e0e7ff;
-  box-shadow: 0 0 0 2px #6366f1;
-  outline: none;
-}
-
-button {
-  margin-top: 1.5rem;
-  padding: 0.85rem;
-  font-size: 1.05rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  background: linear-gradient(90deg, #6366f1 0%, #3b82f6 100%);
-  color: #fff;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  box-shadow: 0 2px 8px rgba(99, 102, 241, 0.08);
-  transition: background 0.3s, transform 0.2s;
-}
-
-button:hover {
-  background: linear-gradient(90deg, #3b82f6 0%, #6366f1 100%);
-  transform: translateY(-2px) scale(1.01);
-}
-
-.register-link {
-  display: block;
-  text-align: center;
-  margin-top: 1.3rem;
-  color: #6366f1;
-  text-decoration: none;
-  font-size: 1rem;
-  font-weight: 500;
-  letter-spacing: 0.01em;
-  transition: color 0.3s;
-}
-
-.register-link:hover {
-  text-decoration: underline;
-  color: #3b82f6;
-}
-
+/* === Title Styling with Glow & Depth === */
 mat-card-title {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  font-size: 1.4rem;
+  gap: 0.7rem;
+  font-size: 1.5rem;
+  font-weight: 600;
+  justify-content: center;
+  letter-spacing: 0.01em;
+  user-select: none;
+  position: relative;
 }
+
 mat-card-title .divider {
   color: #bcdffb;
   font-weight: 400;
+  font-size: 1.2rem;
+  opacity: 0.7;
 }
+
 mat-card-title span {
-  transition: color 0.2s, font-weight 0.2s;
-  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   color: #0066b3;
   font-weight: 500;
+  cursor: pointer;
+  position: relative;
+  padding: 6px 12px;
+  border-radius: 8px;
 }
+
 mat-card-title span.active {
   color: #009de0;
-  font-weight: 700;
-  text-decoration: underline;
+  font-weight: 800;
+  text-shadow: 0 2px 12px rgba(0, 157, 224, 0.25);
+  box-shadow: 0 0 0 2px rgba(0, 157, 224, 0.2);
+  background: rgba(0, 157, 224, 0.08);
+  cursor: default;
+  transform: scale(1.08);
 }
+
+mat-card-title span:not(.active):hover {
+  color: #005fa3;
+  background: rgba(0, 102, 179, 0.06);
+  transform: scale(1.04);
+  text-shadow: 0 2px 8px rgba(0, 157, 224, 0.15);
+}
+
+/* === Subtitle === */
+mat-card-subtitle {
+  text-align: center;
+  color: #0066b3;
+  font-size: 1.08rem;
+  margin-top: 0.2rem;
+  margin-bottom: 1.2rem;
+  letter-spacing: 0.01em;
+  font-weight: 500;
+  opacity: 0.85;
+  animation: fadeInUp 0.5s 0.2s ease-out both;
+}
+
+/* === Form Fields with Floating & Focus === */
+mat-form-field {
+  width: 100%;
+  margin-bottom: 1.2rem;
+  animation: fieldFadeIn 0.7s ease-out both;
+}
+
+@keyframes fieldFadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.mat-form-field-appearance-outline .mat-form-field-outline {
+  border-color: #d0e7f9;
+  transition: all 0.3s ease;
+}
+
+.mat-form-field-appearance-outline .mat-form-field-outline-thick {
+  border-color: #009de0;
+}
+
+input[matInput] {
+  background: #f4f8fb;
+  border-radius: 8px;
+  font-size: 1.08rem;
+  padding: 0.85rem 1rem;
+  border: none;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+input[matInput]:focus {
+  background: #e6f0fa;
+  box-shadow: 
+    inset 0 1px 4px rgba(0, 0, 0, 0.1),
+    0 0 0 2.5px #009de0;
+  outline: none;
+  transform: scale(1.01);
+}
+
+/* === Submit Button with Gradient & Ripple === */
+button[mat-raised-button] {
+  width: 100%;
+  padding: 0.95rem;
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  background: linear-gradient(90deg, #0066b3 0%, #009de0 100%);
+  color: #fff;
+  border: none;
+  border-radius: 9px;
+  margin-top: 0.5rem;
+  box-shadow: 0 2px 12px rgba(0, 102, 179, 0.13);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  transform-origin: center;
+}
+
+button[mat-raised-button]::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.3) 0%, transparent 70%);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: width 0.8s, height 0.8s, opacity 0.5s;
+}
+
+button[mat-raised-button]:active::after {
+  width: 300px;
+  height: 300px;
+  opacity: 1;
+}
+
+button[mat-raised-button]:hover:not(:disabled) {
+  background: linear-gradient(90deg, #009de0 0%, #0066b3 100%);
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 6px 24px rgba(0, 157, 224, 0.2);
+}
+
+button[mat-raised-button]:disabled {
+  background: #bcdffb;
+  color: #fff;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: 0 2px 8px rgba(188, 207, 251, 0.2);
+}
+
+/* === Error Message with Shake & Glow === */
+.ntt-error-message {
+  color: #c62828;
+  background: #ffebee;
+  border: 1px solid #ef9a9a;
+  border-radius: 8px;
+  padding: 0.7rem 1rem;
+  margin-top: 1rem;
+  font-size: 0.98rem;
+  text-align: center;
+  width: 100%;
+  font-weight: 500;
+  box-shadow: 0 0 8px rgba(229, 57, 53, 0.15);
+  animation: shake 0.5s ease-in-out, glowPulse 2s infinite alternate;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  10%, 30%, 50%, 70%, 90% { transform: translateX(-6px); }
+  20%, 40%, 60%, 80% { transform: translateX(6px); }
+}
+
+@keyframes glowPulse {
+  from { box-shadow: 0 0 8px rgba(229, 57, 53, 0.2); }
+  to { box-shadow: 0 0 16px rgba(229, 57, 53, 0.4); }
+}
+
+/* === Success Message with Gentle Pop === */
+.ntt-success-message {
+  color: #006b21;
+  background: #e6f9ed;
+  border: 1px solid #b2e2c7;
+  border-radius: 8px;
+  padding: 0.7rem 1rem;
+  margin-top: 1rem;
+  font-size: 0.98rem;
+  text-align: center;
+  width: 100%;
+  font-weight: 500;
+  animation: fadeInSuccess 0.7s ease-out;
+  box-shadow: 0 0 10px rgba(0, 107, 33, 0.1);
+}
+
+@keyframes fadeInSuccess {
+  from { 
+    opacity: 0; 
+    transform: scale(0.92) translateY(10px); 
+    filter: blur(4px);
+  }
+  to { 
+    opacity: 1; 
+    transform: scale(1) translateY(0); 
+    filter: blur(0);
+  }
+}
+
+/* === Toggle Link === */
 .toggle-link {
   margin-top: 1.2rem;
   text-align: center;
   color: #0066b3;
   font-size: 1rem;
+  animation: fadeIn 0.7s ease-out;
+  user-select: none;
 }
+
 .toggle-link a {
   color: #009de0;
-  font-weight: 600;
+  font-weight: 700;
   margin-left: 0.3rem;
-  text-decoration: underline;
+  text-decoration: none;
   cursor: pointer;
+  position: relative;
+  padding: 2px 0;
+  transition: all 0.2s ease;
 }
-.ntt-error-message {
-  color: #e53935;
-  background: #fff3f3;
-  border: 1px solid #ffcdd2;
-  border-radius: 6px;
-  padding: 0.7rem 1rem;
-  margin-top: 1rem;
-  font-size: 0.98rem;
-  text-align: center;
-  width: 100%;
+
+.toggle-link a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 1.5px;
+  background: #009de0;
+  transition: width 0.3s ease;
 }
-.ntt-success-message {
-  color: #006b21;
-  background: #e6f9ed;
-  border: 1px solid #b2e2c7;
-  border-radius: 6px;
-  padding: 0.7rem 1rem;
-  margin-top: 1rem;
-  font-size: 0.98rem;
-  text-align: center;
+
+.toggle-link a:hover {
+  color: #005fa3;
+  text-shadow: 0 1px 6px rgba(0, 157, 224, 0.2);
+}
+
+.toggle-link a:hover::after {
   width: 100%;
 }
 
-@media (max-width: 768px) {
-  .login-card {
-    padding: 1.5rem 1rem;
-    border-radius: 14px;
+/* === Animations === */
+@keyframes cardFadeIn {
+  from { 
+    opacity: 0; 
+    transform: translateY(50px) scale(0.94); 
+  }
+  to { 
+    opacity: 1; 
+    transform: translateY(0) scale(1); 
+  }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* === Responsive Design === */
+@media (max-width: 600px) {
+  mat-card {
+    padding: 1.2rem 0.5rem 1.5rem 0.5rem;
+    max-width: 98vw;
+    border-radius: 18px;
   }
 
-  button {
-    font-size: 0.98rem;
+  mat-card-title {
+    font-size: 1.25rem;
+    gap: 0.5rem;
   }
+
+  mat-card-title span {
+    padding: 5px 10px;
+    font-size: 1rem;
+  }
+
+  mat-card-title span.active {
+    transform: scale(1.05);
+  }
+
+  input[matInput], button[mat-raised-button] {
+    font-size: 1rem;
+  }
+
+  .toggle-link {
+    font-size: 0.95rem;
+  }
+  @keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+
+/* Apply to card after load */
+mat-card {
+  animation: cardFadeIn 0.9s, float 6s ease-in-out infinite;
+}
 }
