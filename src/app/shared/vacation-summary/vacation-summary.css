@@ -133,6 +133,84 @@ button.mat-button[color="warn"]:focus-visible {
   outline-offset: 2px;
 }
 
+/* Modern animated button styling */
+button[mat-raised-button] {
+  background: linear-gradient(90deg, #0066b3 0%, #009de0 100%);
+  color: #fff;
+  font-weight: 700;
+  font-size: 1.08rem;
+  letter-spacing: 0.03em;
+  border: none;
+  border-radius: 8px;
+  box-shadow: 0 2px 12px rgba(0, 102, 179, 0.13);
+  padding: 0.85rem 2.2rem;
+  margin-top: 0.7rem;
+  margin-bottom: 0.7rem;
+  transition: background 0.3s, transform 0.2s, box-shadow 0.2s;
+  position: relative;
+  overflow: hidden;
+}
+
+button[mat-raised-button]:hover:not(:disabled) {
+  background: linear-gradient(90deg, #009de0 0%, #0066b3 100%);
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 6px 24px rgba(0, 157, 224, 0.18);
+}
+
+button[mat-raised-button]:active {
+  transform: scale(0.98);
+}
+
+button[mat-raised-button][color="warn"] {
+  background: linear-gradient(90deg, #e53935 0%, #ff7043 100%);
+  color: #fff;
+}
+
+button[mat-raised-button][color="warn"]:hover:not(:disabled) {
+  background: linear-gradient(90deg, #ff7043 0%, #e53935 100%);
+  box-shadow: 0 6px 24px rgba(229, 57, 53, 0.18);
+}
+
+button[mat-raised-button]:disabled {
+  background: #bcdffb;
+  color: #fff;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+/* Modern animated styling for Delete button */
+button[mat-button][color="warn"] {
+  background: linear-gradient(90deg, #e53935 0%, #ff7043 100%);
+  color: #fff;
+  font-weight: 700;
+  font-size: 1rem;
+  border: none;
+  border-radius: 7px;
+  box-shadow: 0 2px 8px rgba(229, 57, 53, 0.13);
+  padding: 0.55rem 1.5rem;
+  margin: 0.2rem 0;
+  transition: background 0.3s, transform 0.2s, box-shadow 0.2s;
+  position: relative;
+  overflow: hidden;
+}
+
+button[mat-button][color="warn"]:hover:not(:disabled) {
+  background: linear-gradient(90deg, #ff7043 0%, #e53935 100%);
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 6px 18px rgba(229, 57, 53, 0.18);
+}
+
+button[mat-button][color="warn"]:active {
+  transform: scale(0.97);
+}
+
+button[mat-button][color="warn"]:disabled {
+  background: #ffcdd2;
+  color: #fff;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
 /* Ripple Effect on Buttons */
 button .mat-ripple {
   opacity: 0.2 !important;
