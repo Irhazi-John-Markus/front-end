@@ -14,15 +14,6 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      # Debug step to verify directory structure
-      - name: Debug: List directory structure
-        run: |
-          echo "Root directory contents:"
-          ls -la
-          echo "Searching for Angular config files:"
-          find . -name "angular.json" -type f
-          find . -name "package.json" -type f
-
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
@@ -32,7 +23,7 @@ jobs:
         env:
           API_URL: ${{ secrets.apiUrl }}
         run: |
-          cd front-end  # Navigate to the front-end folder
+          cd front-end
           mkdir -p src/environment
           echo "export const environment = { production: true, apiUrl: '$API_URL' };" > src/environment/environment.ts
           npm ci
