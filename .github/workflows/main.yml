@@ -24,8 +24,8 @@ jobs:
           API_URL: ${{ secrets.apiUrl }}
         run: |
           cd front-end
-          mkdir -p src/environments
-          echo "export const environment = { production: true, apiUrl: '$API_URL' };" > src/environments/environment.ts
+          mkdir -p src/environment
+          echo "export const environment = { production: true, apiUrl: '$API_URL' };" > src/environment/environment.ts
           npm ci
           npm run build -- --configuration=production
 
