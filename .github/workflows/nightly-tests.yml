@@ -1,0 +1,58 @@
+name: Nightly Tests
+
+on:
+  schedule:
+    # Runs daily at 02:00 UTC
+    - cron: '0 2 * * *'
+
+  # Allow manual trigger
+  workflow_dispatch:
+
+jobs:
+  run-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js (adjust version as needed)
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run tests and capture output
+        id: run_tests
+        run: |
+          echo "🧪 Starting tests at $(date --utc)" > test-report.txt
+          echo "" >> test-report.txt
+
+          # Run tests and append output
+          if npm test; then
+            echo "" >> test-report.txt
+            echo "✅ All tests passed" >> test-report.txt
+            echo "STATUS=success" >> $GITHUB_OUTPUT
+          else
+            echo "" >> test-report.txt
+            echo "❌ One or more tests failed" >> test-report.txt
+            echo "STATUS=failed" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Display report in log
+        run: |
+          echo "📋 Test Report:"
+          echo "----------------"
+          cat test-report.txt
+          echo "----------------"
+
+      - name: Upload report as artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: nightly-test-report-${{ github.run_id }}
+          path: test-report.txt
+
+      - name: Final status summary
+        run: |
+          echo "🎉 Nightly test job completed with status: ${{ steps.run_tests.outputs.STATUS }}"
