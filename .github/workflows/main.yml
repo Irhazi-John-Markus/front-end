@@ -1,28 +1,39 @@
+name: Deploy Angular to Firebase Hosting
+
 on:
   push:
     branches:
       - main
+  workflow_dispatch:
 
 jobs:
-  build-and-deploy:
+  deploy:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout source code
+      - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Use Node.js
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '20'
 
-      - name: Install dependencies
-        run: npm ci
+      - name: Install dependencies and build
+        env:
+          API_URL: ${{ secrets.apiUrl }}
+        run: |
+          cd front-end
+          mkdir -p src/environment
+          echo "export const environment = { production: true, apiUrl: '$API_URL' };" > src/environment/environment.ts
+          npm ci
+          npm run build -- --configuration=production
 
-      - name: Build Angular app
-        run: npm run build -- --output-path docs --base-href "/${{ github.event.repository.name }}/"
-
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v4
+      - name: Deploy to Firebase Hosting
+        uses: FirebaseExtended/action-hosting-deploy@v0
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: docs
+          repoToken: ${{ secrets.GITHUB_TOKEN }}
+          firebaseServiceAccount: ${{ secrets.FIREBASE_TOKEN }}
+          projectId: ${{ secrets.FIREBASE_PROJECT_ID }}
+        env:
+          FIREBASE_CLI_PREVIEWS: hostingchannels
