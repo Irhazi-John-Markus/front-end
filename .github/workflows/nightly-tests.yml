@@ -4,6 +4,8 @@ on:
   schedule:
     # Runs daily at 02:00 UTC
     - cron: '0 2 * * *'
+
+  # Allow manual trigger
   workflow_dispatch:
 
 jobs:
@@ -13,7 +15,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Setup Node.js
+      - name: Setup Node.js (adjust version as needed)
         uses: actions/setup-node@v4
         with:
           node-version: '18'
@@ -51,25 +53,6 @@ jobs:
           name: nightly-test-report-${{ github.run_id }}
           path: test-report.txt
 
-      - name: Send email report
-        if: always()  # Ensures this runs even if tests fail
-        uses: dawidd6/action-send-mail@v3
-        with:
-          server_address: smtp.gmail.com  # Example: Gmail SMTP
-          server_port: 465
-          username: ${{ secrets.EMAIL_USERNAME }}
-          password: ${{ secrets.EMAIL_PASSWORD }}
-          subject: "Nightly Test Report - ${{ github.run_id }} - ${{ steps.run_tests.outputs.STATUS }}"
-          body: |
-            Hi there,
-
-            Here is the nightly test report:
-
-            $(cat test-report.txt)
-
-            Workflow Run: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}
-
-            Best,
-            CI System
-          to: john.irhazi@emeal.nttdata.com
-          from: CI Notifier <ci@example.com>  # Optional: customize sender name
+      - name: Final status summary
+        run: |
+          echo "🎉 Nightly test job completed with status: ${{ steps.run_tests.outputs.STATUS }}"
