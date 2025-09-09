@@ -9,6 +9,7 @@ import { Timer } from "./components/timer/timer";
 import { Main } from "./main/main";
 import { ApiService } from "./services/api"
 import { RouterModule } from "@angular/router";
+import { Chatbot } from './components/chatbot/chatbot';
 
 
 @Component({
@@ -22,6 +23,7 @@ import { RouterModule } from "@angular/router";
     Hourglass,
     ProgressBar,
     Timer,
+    Chatbot,
     Main,
     RouterModule
 ],

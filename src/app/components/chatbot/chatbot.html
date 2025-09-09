@@ -1,0 +1,45 @@
+<!-- chatbot.component.html -->
+
+<!-- Floating Chat Icon -->
+<div class="chat-toggle" (click)="toggleChat()" *ngIf="!isOpen">
+  💬
+</div>
+
+<!-- Chat Panel (slides in from right) -->
+<div class="chat-panel" [class.open]="isOpen">
+  <div class="chat-header">
+    <div class="header-content">
+      <div class="avatar">🤖</div>
+      <h4>Assistant</h4>
+    </div>
+    <button class="close-btn" (click)="toggleChat()">✕</button>
+  </div>
+
+  <div class="chat-messages" #messageContainer>
+    <div *ngFor="let msg of messages; let i = index" 
+         [ngClass]="{'user-message': msg.sender === 'user', 'bot-message': msg.sender === 'bot'}"
+         [@slideIn]>
+      <div class="avatar" *ngIf="msg.sender === 'bot'">🤖</div>
+      <div class="message-bubble">
+        {{ msg.text }}
+        <div class="timestamp">{{ getTimestamp(i) }}</div>
+      </div>
+      <div class="avatar user" *ngIf="msg.sender === 'user'">👤</div>
+    </div>
+  </div>
+
+  <div class="chat-input">
+    <input 
+      type="text" 
+      [(ngModel)]="userInput" 
+      (keyup.enter)="sendMessage()" 
+      placeholder="Ask me anything..." 
+      autofocus />
+    <button (click)="sendMessage()">
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="22" y1="2" x2="11" y2="13"></line>
+        <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+      </svg>
+    </button>
+  </div>
+</div>
