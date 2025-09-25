@@ -1,11 +1,10 @@
-<div class="sidenav">
+<div class="sidenav" [class.sidenav-collapsed]="isLeftSidebarCollapsed()">
   <div class="logo-container">
     <button class="logo" (click)="toggleCollapse()">
       <mat-icon>menu</mat-icon>
     </button>
     <div *ngIf="!isLeftSidebarCollapsed()" class="logo-text"></div>
     <button class="btn-close" (click)="closeSidenav()">
-      <mat-icon>close</mat-icon>
     </button>
   </div>
   <ul class="sidenav-nav">

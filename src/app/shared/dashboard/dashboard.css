@@ -3,9 +3,9 @@
     flex-direction: column;
     align-items: center;
     padding: 2rem;
-    border: 5px solid #0c99be;
+    border: 5px solid #1e1490;
     color:#000000;
-    background: linear-gradient(135deg, #f0f9ff, #cfefff);
+    background: linear-gradient(135deg, #0c99be, #0056b3);
     border-radius: 15px;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
     transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
@@ -14,7 +14,6 @@
 .dashboard:hover {
     transform: scale(1.02);
     box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
-    background: linear-gradient(135deg, #e0f7fa, #b2ebf2);
   }
 
   .timer {
