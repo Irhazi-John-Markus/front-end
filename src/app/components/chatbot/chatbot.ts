@@ -50,6 +50,11 @@ export class Chatbot implements OnInit, OnDestroy {
       }, 300);
     }
   }
+  clearConversation() {
+  this.messages = [];
+  localStorage.removeItem('chatbotMessages');
+  this.addBotMessage("🧹 Chat history cleared! Fresh start. What’s your next goal?");
+}
 
   sendMessage() {
     if (!this.userInput.trim()) return;

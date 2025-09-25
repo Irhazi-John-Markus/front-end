@@ -279,6 +279,42 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
+.clear-chat-btn {
+  background: transparent;
+  border: none;
+  color: #888;
+  font-size: 0.85rem;
+  padding: 6px 12px;
+  border-radius: 16px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 8px;
+}
+
+.clear-chat-btn:hover {
+  background-color: #f0f0f0;
+  color: #e74c3c;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+.clear-chat-btn:active {
+  transform: translateY(0);
+}
+
+.clear-chat-btn svg {
+  width: 14px;
+  height: 14px;
+  transition: transform 0.2s ease;
+}
+
+.clear-chat-btn:hover svg {
+  transform: rotate(15deg);
+}
+
 @media (max-width: 768px) {
   .chat-panel {
     width: 100%;
