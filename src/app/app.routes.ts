@@ -5,11 +5,13 @@ import { VacationSummary} from './shared/vacation-summary/vacation-summary';
 import { Summary} from './shared/summary/summary';
 import { InteractiveGrid} from './shared/interactive-grid/interactive-grid';
 import { Authentication } from './auth/authentication/authentication';
+import { TimeEntries } from './shared/time-entries/time-entries';
 
 
 export const routes: Routes = [
     { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
     { path: 'dashboard', component: Dashboard },
+    { path: 'time-entries', component: TimeEntries },
     { path: 'leave-tickets', component: LeaveTickets },
     { path: 'vacation', component: VacationSummary },
     { path: 'summary', component: Summary },

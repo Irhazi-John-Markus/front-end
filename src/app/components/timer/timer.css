@@ -64,3 +64,55 @@
   border: 2px solid #707070;
 }
 
+.save-btn {
+  background-color: #1976d2;
+  border: none;
+  color: rgb(255, 255, 255);
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.save-btn:hover:not(:disabled) {
+  background-color: #ffffff;
+  color: #1976d2;
+  border: 2px solid #1976d2;
+}
+
+.save-btn:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.button-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.elapsed-time {
+  text-align: center;
+  font-size: 32px;
+  font-weight: bold;
+  color: #333;
+  margin: 20px 0;
+}
+
+.btn:disabled,
+.stop-btn:disabled,
+.reset-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}

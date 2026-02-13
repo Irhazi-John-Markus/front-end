@@ -1,0 +1,137 @@
+<div class="time-entries-container">
+  <h1>Time Entry Management</h1>
+
+  <!-- Form Section -->
+  <mat-card class="form-container">
+    <mat-card-header>
+      <mat-card-title>{{ editingId() ? 'Edit Time Entry' : 'Create New Time Entry' }}</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <div class="form-row">
+          <mat-form-field appearance="outline" class="form-field">
+            <mat-label>Email</mat-label>
+            <input matInput formControlName="email" type="email" placeholder="your.email@example.com">
+            <mat-error *ngIf="form.get('email')?.hasError('required')">Email is required</mat-error>
+            <mat-error *ngIf="form.get('email')?.hasError('email')">Invalid email format</mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="form-field">
+            <mat-label>Project</mat-label>
+            <input matInput formControlName="project" placeholder="Enter project name" minlength="3">
+            <mat-error *ngIf="form.get('project')?.hasError('required')">Project is required</mat-error>
+            <mat-error *ngIf="form.get('project')?.hasError('minlength')">Project must be at least 3 characters</mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="form-row">
+          <mat-form-field appearance="outline" class="form-field">
+            <mat-label>Start Time</mat-label>
+            <input matInput formControlName="startTime" type="datetime-local" required>
+            <mat-error *ngIf="form.get('startTime')?.hasError('required')">Start time is required</mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="form-field">
+            <mat-label>End Time (Optional)</mat-label>
+            <input matInput formControlName="endTime" type="datetime-local">
+          </mat-form-field>
+        </div>
+
+        <div class="form-row">
+          <mat-form-field appearance="outline" class="form-field full-width">
+            <mat-label>Notes (Max 500 characters)</mat-label>
+            <textarea matInput formControlName="notes" maxlength="500" rows="3" placeholder="Add any notes..."></textarea>
+            <mat-hint align="end">{{ form.get('notes')?.value?.length || 0 }}/500</mat-hint>
+          </mat-form-field>
+        </div>
+
+        <div class="form-actions">
+          <button mat-raised-button color="primary" type="submit" [disabled]="isSubmitting()">
+            <span *ngIf="!isSubmitting()">{{ editingId() ? 'Update Entry' : 'Create Entry' }}</span>
+            <span *ngIf="isSubmitting()">
+              <mat-spinner diameter="20" class="inline-spinner"></mat-spinner>
+              Processing...
+            </span>
+          </button>
+          <button mat-stroked-button type="button" (click)="cancelEdit()" *ngIf="editingId()">
+            Cancel
+          </button>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+
+  <!-- Table Section -->
+  <mat-card class="table-container">
+    <mat-card-header>
+      <mat-card-title>Your Time Entries</mat-card-title>
+      <mat-card-subtitle *ngIf="!isLoading()">Total: {{ timeEntries().length }} entries</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <div *ngIf="isLoading()" class="loading-spinner">
+        <mat-spinner diameter="40"></mat-spinner>
+        <p>Loading time entries...</p>
+      </div>
+
+      <div *ngIf="!isLoading() && timeEntries().length === 0" class="no-data">
+        <p>No time entries yet. Create one using the form above!</p>
+      </div>
+
+      <div *ngIf="!isLoading() && timeEntries().length > 0" class="table-wrapper">
+        <table mat-table [dataSource]="timeEntries()" class="time-entries-table">
+          <!-- ID Column -->
+          <ng-container matColumnDef="id">
+            <th mat-header-cell *matHeaderCellDef>ID</th>
+            <td mat-cell *matCellDef="let element">{{ element.id }}</td>
+          </ng-container>
+
+          <!-- Email Column -->
+          <ng-container matColumnDef="email">
+            <th mat-header-cell *matHeaderCellDef>Email</th>
+            <td mat-cell *matCellDef="let element">{{ element.email }}</td>
+          </ng-container>
+
+          <!-- Project Column -->
+          <ng-container matColumnDef="project">
+            <th mat-header-cell *matHeaderCellDef>Project</th>
+            <td mat-cell *matCellDef="let element">{{ element.project }}</td>
+          </ng-container>
+
+          <!-- Start Time Column -->
+          <ng-container matColumnDef="startTime">
+            <th mat-header-cell *matHeaderCellDef>Start Time</th>
+            <td mat-cell *matCellDef="let element">{{ formatDateTime(element.startTime) }}</td>
+          </ng-container>
+
+          <!-- End Time Column -->
+          <ng-container matColumnDef="endTime">
+            <th mat-header-cell *matHeaderCellDef>End Time</th>
+            <td mat-cell *matCellDef="let element">{{ formatDateTime(element.endTime) }}</td>
+          </ng-container>
+
+          <!-- Notes Column -->
+          <ng-container matColumnDef="notes">
+            <th mat-header-cell *matHeaderCellDef>Notes</th>
+            <td mat-cell *matCellDef="let element">{{ element.notes || '-' }}</td>
+          </ng-container>
+
+          <!-- Actions Column -->
+          <ng-container matColumnDef="actions">
+            <th mat-header-cell *matHeaderCellDef>Actions</th>
+            <td mat-cell *matCellDef="let element">
+              <button mat-icon-button color="primary" (click)="editEntry(element)" matTooltip="Edit">
+                <mat-icon>edit</mat-icon>
+              </button>
+              <button mat-icon-button color="warn" (click)="deleteEntry(element.id!)" matTooltip="Delete">
+                <mat-icon>delete</mat-icon>
+              </button>
+            </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>

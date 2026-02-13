@@ -29,6 +29,11 @@ export class LeftSidebar {
       label: 'Home',
     },
     {
+      routeLink: 'time-entries',
+      icon: 'schedule',
+      label: 'Time Entries',
+    },
+    {
       routeLink: 'leave-tickets',
       icon: 'event_note',
       label: 'Leave Tickets',
